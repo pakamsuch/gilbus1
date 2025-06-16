@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>길버스 - 분당 정류장 지도</title>
+  <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2cba6d0255919c89eced3d40f28160e0&libraries=services"></script>
+  <style>
+    html, body { margin: 0; padding: 0; }
+    #map { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    const busStops = [
+      { name: "정자역", lat: 37.3670, lng: 127.1087 },
+      { name: "서현역", lat: 37.3849, lng: 127.1215 },
+      { name: "이매역", lat: 37.3953, lng: 127.1277 }
+    ];
+    const map = new kakao.maps.Map(document.getElementById('map'), {
+      center: new kakao.maps.LatLng(37.3784, 127.1144),
+      level: 5
+    });
+    busStops.forEach(stop => {
+      const marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(stop.lat, stop.lng),
+        title: stop.name
+      });
+    });
+  </script>
+</body>
+</html>
